@@ -44,7 +44,7 @@ pipeline{
 	   label 'BuildServer'
 	   }
         steps{
-             deploy adapters: [tomcat9(credentialsId: 'TOMCAT', path: 'http://18.234.156.78:8080/manager/html/', url: 'http://18.234.156.78:8080/')], contextPath: '/opt/staging-server/webapps/', war: 'target/*.war'
+             deploy adapters: [tomcat9(credentialsId: 'TOMCAT', path: '', url: 'http://18.234.156.78:8080/')], contextPath: 'http://18.234.156.78:8080/manager/html', war: '*/target/*.war'
              }
    
           }  
