@@ -13,7 +13,7 @@ pipeline{
 	   }
             }
            }
-           stage('Static-Analysis){
+           stage('Static-Analysis') {
        agent {
 	   label 'BuildServer'
 	   }
@@ -26,5 +26,5 @@ pipeline{
 	      }
         }
           }
-     }
+    }
  }
