@@ -1,17 +1,13 @@
-def str = 'PIPELINE'
-pipeline {
-    agent any
-
-    stages {
-        stage('Hello') {
-            steps {
-                echo 'Hello World'
-            }
+pipeline{
+    agent none
+    stages{
+	  stage('Checkout code') {
+	   agent {
+	   label 'BuildServer'
+	   }
+	    steps{
+	        checkout([$class: 'GitSCM', branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[credentialsId: 'Github', url: 'https://github.com/gaddam146/Maven-Java-Project.git']]])
         }
-        stage('WELCOME') {
-            steps {
-                echo "WELCOME TO ${str} SCRIPT"
-            }
-        }  
-     }
+      }
+   }
 }
