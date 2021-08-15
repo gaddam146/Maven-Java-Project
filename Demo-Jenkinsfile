@@ -1,4 +1,4 @@
-def str = PIPELINE
+def str = 'PIPELINE'
 pipeline {
     agent any
 
@@ -12,5 +12,6 @@ pipeline {
             steps {
                 echo "WELCOME TO ${str} SCRIPT"
             }
-    }
+        }  
+     }
 }
