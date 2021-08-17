@@ -55,7 +55,7 @@ pipeline{
 	     sshCommand remote: stagingserver, command: "sh /opt/staging-server/bin/shutdown.sh"
 	     
 	     //Deploy the Application cp .war to webapps directory
-	     sshPut remote: stagingserver, from: 'target/webapp.war', into: '/opt/staging-server/webapps/
+	     sshPut remote: stagingserver, from: 'target/webapp.war', into: '/opt/staging-server/webapps/'
 	         
 	     // Start the staging server Tomcat_Home/bin/startup.sh
 	     sshCommand remote: stagingserver, command: "sh /opt/staging-server/bin/startup.sh"
