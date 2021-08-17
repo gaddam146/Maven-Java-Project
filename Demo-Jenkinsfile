@@ -50,7 +50,7 @@ pipeline{
 	   label 'BuildServer'
 	   }
         steps{
-              sh " '${mvnHome}/bin/mvn' clean deploy"
+              sh " '${mvnHome}/bin/mvn' clean deploy -Dmaven.test.skip=true"
              }
           }
     	stage('Deploy-to-Container'){
