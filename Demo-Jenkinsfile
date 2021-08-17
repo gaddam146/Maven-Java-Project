@@ -37,7 +37,7 @@ pipeline{
 	   label 'BuildServer'
 	   }
         steps{
-              sh " '${mvnHome}/bin/mvn' clean package"
+              sh " '${mvnHome}/bin/mvn' package"
              }
         post{
               success {
