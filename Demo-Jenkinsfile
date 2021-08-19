@@ -19,7 +19,7 @@ pipeline{
 		  stash 'source'
 		  }
 		  }
-		  stage('Tools Setup){
+		  stage('Tools-Setup') {
 		  steps{
 		  sshCommand remote: ansible, command: 'cd Maven-Java-project, git pull'
 		  sshCommand remote: ansible, command: 'cd Maven-Java-Project; ansible-playbook -i hosts tools/sonarqube/sonar-install.yaml'
