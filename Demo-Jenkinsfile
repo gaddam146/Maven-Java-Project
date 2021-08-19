@@ -1,5 +1,5 @@
 def ansible = [:]
-    ansible.name = 'ansible'
+        ansible.name = 'ansible'
 	ansible.host = '172.31.49.252'
 	ansible.user = 'centos'
 	ansible.password = 'Rnstech@123'
