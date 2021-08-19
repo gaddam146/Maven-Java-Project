@@ -56,7 +56,6 @@ pipeline {
 		     // echo "Clean and Test"
                   //junit 'target/surefire-reports/*.xml'
               }
-          }
       }
 		}
 		}
