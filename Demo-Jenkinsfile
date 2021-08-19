@@ -1,7 +1,13 @@
+def ansible = [:]
+    ansible.name = 'ansible'
+	ansible.host = '172.31.49.252'
+	ansible.user = 'centos'
+	ansible.password = 'Rnstech@123
+	remote.allowAnyHosts = true
 pipeline{
-    agent { label 'BuildServer'}
-    tools {
-        // Install the Maven version configured as "Maven" and add it to the path.
+ agent { label:'BuildServer'}
+     tools {
+        // Install the Maven version configured as "M3" and add it to the path.
         maven "Maven"
     }
 	stages {
@@ -11,6 +17,13 @@ pipeline{
 	      // cloning the workspace
 		  git credentialsId: 'Github', url: 'https://github.com/gaddam146/Maven-Java-Project.git'
 		  stash 'source'
+		  }
+		  }
+		  stage('Tools Setup){
+		  steps{
+		  sshCommand remote: ansible, command: 'cd Maven-Java-project, git pull'
+		  sshCommand remote: ansible, command: 'cd Maven-Java-Project; ansible-playbook -i hosts tools/sonarqube/sonar-install.yaml'
+		  sshCommand remote: ansible, command: 'cd Maven-Java-Project; ansible-playbook -i hosts tools/docker/docker-install.yml'
 		  }
 		  }
 		}
