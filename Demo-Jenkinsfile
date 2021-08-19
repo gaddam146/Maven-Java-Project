@@ -5,7 +5,7 @@ def ansible = [:]
 	ansible.password = 'Rnstech@123'
 	remote.allowAnyHosts = true
 pipeline{
-     agent { label:'BuildServer'}
+     agent { label'BuildServer'}
      tools {
         // Install the Maven version configured as "M3" and add it to the path.
         maven "Maven"
