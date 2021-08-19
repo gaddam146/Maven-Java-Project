@@ -22,9 +22,11 @@ pipeline{
 		  stage('Tools-Setup') {
 		  steps{
 		  echo "Ansible-Docker & Sonarqube Installation"
-		   sshCommand remote: ansible, command: 'cd Maven-Java-Project; git pull'
-                  //sshCommand remote: ansible, command: 'cd Maven-Java-Project; ansible-playbook -i hosts tools/sonarqube/sonar-install.yaml'
-                  //sshCommand remote: ansible, command: 'cd Maven-Java-Project; ansible-playbook -i hosts tools/docker/docker-install.yml'
+		   //sshCommand remote: ansible, command: 'cd Maven-Java-Project; git pull'
+		   echo "Installing SonarQube Server"
+                  sshCommand remote: ansible, command: 'cd Maven-Java-Project; ansible-playbook -i hosts tools/sonarqube/sonar-install.yaml'
+		  echo "Installing Docker"
+                  sshCommand remote: ansible, command: 'cd Maven-Java-Project; ansible-playbook -i hosts tools/docker/docker-install.yml'
 		  }
 		  }
 		}
