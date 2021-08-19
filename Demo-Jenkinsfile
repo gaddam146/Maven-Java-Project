@@ -1,1 +1,19 @@
-Pipeline{
+pipeline{
+ agent {
+  label: 'BuildServer'
+ }
+    tools {
+        // Install the Maven version configured as "M3" and add it to the path.
+        maven "maven"
+    }
+	stages {
+	  stage('Prepare the workspace'){
+	  
+	  steps{
+	      // cloning the workspace
+		  git credentialsId: 'Github', url: 'https://github.com/gaddam146/Maven-Java-Project.git'
+		  stash 'source'
+		  }
+		  }
+		}
+		}
