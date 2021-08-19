@@ -29,7 +29,7 @@ pipeline {
         }
         stage('Tools-Setup') {
             steps {
-		    echo "Tools Setup"
+		    //echo "Tools Setup"
 		    //sshCommand remote: remote, command: "hostname"
 		    //sshCommand remote: remote, command: "date"
 		    //sshCommand remote: remote, command: "ansible all -m ping"
@@ -41,21 +41,21 @@ pipeline {
 		//K8s Setup
 		sshCommand remote: kops, command: "hostname"
 		sshCommand remote: remote, command: "date"
-                //sshCommand remote: kops, command: "cd Maven-Java-Project; git pull"
-	       //sshCommand remote: kops, command: "kubectl apply -f Maven-Java-Project/k8s-code/staging/namespace/staging-ns.yml"
-	       //sshCommand remote: kops, command: "kubectl apply -f Maven-Java-Project/k8s-code/prod/namespace/prod-ns.yml"
+                sshCommand remote: kops, command: "cd Maven-Java-Project; git pull"
+	        sshCommand remote: kops, command: "kubectl apply -f Maven-Java-Project/k8s-code/staging/namespace/staging-ns.yml"
+	        sshCommand remote: kops, command: "kubectl apply -f Maven-Java-Project/k8s-code/prod/namespace/prod-ns.yml"
 		}
 		}
-	//stage('Unit Test Cases') {
-                  // steps{
-	           //echo "Clean and Test"
-                   //sh "mvn clean test"  
-        //  }
-        //  post{
-             // success{
-		     // echo "Clean and Test"
-                  //junit 'target/surefire-reports/*.xml'
-              //}
-     //}
+	stage('Unit Test Cases') {
+                   steps{
+	          echo "Clean and Test"
+                  sh "mvn clean test"  
+          }
+          post{
+           success{
+		  echo "Clean and Test"
+                 junit 'target/surefire-reports/*.xml'
+              }
+     }
 		}
 		}
