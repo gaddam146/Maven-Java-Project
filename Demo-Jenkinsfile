@@ -1,9 +1,9 @@
 def ansible = [:]
-        ansible.name = 'ansible'
-	ansible.host = '172.31.49.252'
-	ansible.user = 'centos'
-	ansible.password = 'Rnstech@123'
-	remote.allowAnyHosts = true
+         ansible.name = 'ansible'
+         ansible.host = '172.31.30.154'
+         ansible.user = 'centos'
+         ansible.password = 'Rnstech@123'
+         ansible.allowAnyHosts = true
 pipeline{
      agent { label'BuildServer'}
      tools {
