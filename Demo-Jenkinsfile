@@ -1,5 +1,5 @@
 pipeline{
-    agent { label 'buildserver'}
+    agent { label 'BuildServer'}
     tools {
         // Install the Maven version configured as "Maven" and add it to the path.
         maven "Maven"
