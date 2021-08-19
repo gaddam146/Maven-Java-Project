@@ -1,10 +1,8 @@
 pipeline{
- agent {
-  label: 'BuildServer'
- }
+    agent {label: 'BuildServer' }
     tools {
-        // Install the Maven version configured as "M3" and add it to the path.
-        maven "maven"
+        // Install the Maven version configured as "Maven" and add it to the path.
+        maven "Maven"
     }
 	stages {
 	  stage('Prepare the workspace'){
