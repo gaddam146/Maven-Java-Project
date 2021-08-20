@@ -95,7 +95,7 @@ pipeline {
        //Deploy to K8s cluster
        echo "Deploy to staging server"
               sshCommand remote: kops, command: "cd Maven-Java-Project; git pull"
-	      //sshCommand remote: kops, command: "kubectl delete -f Maven-Java-Project/k8s-code/staging/app/deploy-webapp.yml"
+	      sshCommand remote: kops, command: "kubectl delete -f Maven-Java-Project/k8s-code/staging/app/deploy-webapp.yml"
 	      sshCommand remote: kops, command: "kubectl apply -f Maven-Java-Project/k8s-code/staging/app/."
        }
        }
@@ -104,6 +104,14 @@ pipeline {
        echo "Run Integration test cases"
        //unstash 'source'
        sh "mvn clean verify"
+       }
+       }
+       stage('Approval')
+       steps{
+       echo "Approval State"
+       timeout(time: 7, unit: 'DAYS') {
+    // some block
+}
        }
        }
        }
