@@ -102,7 +102,7 @@ pipeline {
        stage('Integration Tests'){
        steps{
        echo "Run Integration test cases"
-       unstash 'source'
+       //unstash 'source'
        sh "mvn clean verify"
        }
        }
