@@ -49,7 +49,7 @@ pipeline {
 	stage ('SonarQube Analaysis'){
 	steps{
 	echo "sonar scanner"
-	sh "mvn clean compile"
+	//sh "mvn clean compile"
 	//withSonarQubeEnv('sonar-7'){
 	//sh "mvn sonar:sonar"
 	//}
@@ -57,11 +57,11 @@ pipeline {
 	}
 	stage('Unit Test Cases'){
 	steps{
-	sh "mvn clean test"
+	//sh "mvn clean test"
 	}
 	post{
 	success {
-	junit 'target/surefire-reports/*.xml'
+	//junit 'target/surefire-reports/*.xml'
 	}
 	}
 	}
