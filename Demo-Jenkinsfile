@@ -75,6 +75,11 @@ pipeline {
 	archiveArtifacts artifacts: '**/*.war', followSymlinks: false
 	}
 	}
-}
+        }
+       stage('Build Code'){
+       steps{
+       sh 'docker build -t gaddam146/webapp .'
+       }
+       }
 }
 }
