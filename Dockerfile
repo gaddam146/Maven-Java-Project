@@ -8,10 +8,10 @@ RUN java -version
 
 #RUN mkdir /opt/tomcat/
 
-WORKDIR /tmp 
-#RUN wget https://downloads.apache.org/tomcat/tomcat-9/v9.0.52/bin/apache-tomcat-9.0.52.tar.gz
-RUN tar xzvf apache-tomcat-9.0.52.tar.gz -C /tmp/
-RUN cp -R /tmp/apache-tomcat-9.0.52/ /opt/tomcat
+WORKDIR /opt
+RUN curl -O http://mirrors.estointernet.in/apache/tomcat/tomcat-8/v8.5.58/bin/apache-tomcat-8.5.58.tar.gz
+RUN tar xzvf apache-tomcat-8.5.58.tar.gz -C /opt/
+RUN cp -R /opt/apache-tomcat-8.5.58/ /opt/tomcat
 
 WORKDIR /opt/tomcat/webapps
 COPY target/*.war /opt/tomcat/webapps/webapp.war
