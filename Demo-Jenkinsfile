@@ -99,5 +99,12 @@ pipeline {
 	      sshCommand remote: kops, command: "kubectl apply -f Maven-Java-Project/k8s-code/staging/app/."
        }
        }
+       stage('Integration Tests'){
+       steps{
+       echo "Run Integration test cases"
+       unstash 'source'
+       sh "mvn clean verify"
+       }
+       }
        }
        }
