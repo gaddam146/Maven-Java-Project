@@ -65,5 +65,16 @@ pipeline {
 	}
 	}
 	}
+	stage('Build Code'){
+	steps{
+	unstash 'source'
+	sh "mvn clean package"
+	}
+	post{
+	success{
+	archiveArtifacts artifacts: '**/*.war', followSymlinks: false
 	}
 	}
+}
+}
+}
