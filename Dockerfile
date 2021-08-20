@@ -10,8 +10,8 @@ RUN java -version
 
 WORKDIR /tmp 
 #RUN wget https://downloads.apache.org/tomcat/tomcat-9/v9.0.52/bin/apache-tomcat-9.0.52.tar.gz
-RUN tar xzvf apache-tomcat-9.0.52.tar.gz -C /opt/
-RUN cp -R /opt/apache-tomcat-9.0.52.tar.gz/ /opt/tomcat
+RUN tar xzvf apache-tomcat-9.0.52.tar.gz -C /tmp/
+RUN cp -R /tmp/apache-tomcat-9.0.52.tar.gz/ /opt/tomcat
 
 WORKDIR /opt/tomcat/webapps
 COPY target/*.war /opt/tomcat/webapps/webapp.war
