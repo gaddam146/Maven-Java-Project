@@ -50,9 +50,9 @@ pipeline {
 	steps{
 	echo "sonar scanner"
 	sh "mvn clean compile"
-	withSonarQubeEnv('sonar-7'){
-	sh "mvn sonar:sonar"
-	}
+	//withSonarQubeEnv('sonar-7'){
+	//sh "mvn sonar:sonar"
+	//}
 	}
 	}
 	stage('Unit Test Cases'){
