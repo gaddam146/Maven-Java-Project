@@ -9,7 +9,7 @@ RUN java -version
 #RUN mkdir /opt/tomcat/
 
 WORKDIR /home/centos
-RUN sudo wget https://downloads.apache.org/tomcat/tomcat-9/v9.0.52/bin/apache-tomcat-9.0.52.tar.gz
+RUN wget https://downloads.apache.org/tomcat/tomcat-9/v9.0.52/bin/apache-tomcat-9.0.52.tar.gz
 RUN tar -xvf apache-tomcat-9.0.52.tar.gz 
 RUN sudo cp -R apache-tomcat-9.0.52/ /opt/tomcat
 
