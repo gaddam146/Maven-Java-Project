@@ -106,7 +106,7 @@ pipeline {
        sh "mvn clean verify"
        }
        }
-       stage('Approval')
+       stage('Approval'){
        steps{
        echo "Approval State"
        timeout(time: 7, unit: 'DAYS') {
