@@ -81,5 +81,14 @@ pipeline {
        sh 'docker build -t gaddam146/webapp .'
        }
        }
+       stage('Publish Docker Image'){
+       steps{
+       withCredentials([usernamePassword(credentialsId: 'Dockerhub', passwordVariable: 'dockerPassword', usernameVariable: 'dockerUser')]) {
+    		    sh "docker login -u ${dockerUser} -p ${dockerPassword}"
+		    }
+	sh " docker push gaddam146/webapp"
+		   
+       }
+       }
        }
        }
