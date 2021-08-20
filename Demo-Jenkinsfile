@@ -110,8 +110,8 @@ pipeline {
        steps{
        echo "Approval State"
        timeout(time: 7, unit: 'DAYS') {
-    // some block
-}
+       // some block
+       }
        }
        }
        }
