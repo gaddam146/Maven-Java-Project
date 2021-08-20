@@ -39,11 +39,11 @@ pipeline {
                   sshCommand remote: remote, command: 'cd Maven-Java-Project; ansible-playbook tools/docker/docker-install.yml'  
 		
 		//K8s Setup
-		//sshCommand remote: kops, command: "hostname"
-		//sshCommand remote: remote, command: "date"
-                //sshCommand remote: kops, command: "cd Maven-Java-Project; git pull"
-	        //sshCommand remote: kops, command: "kubectl apply -f Maven-Java-Project/k8s-code/staging/namespace/staging-ns.yml"
-	        //sshCommand remote: kops, command: "kubectl apply -f Maven-Java-Project/k8s-code/prod/namespace/prod-ns.yml"
+		sshCommand remote: kops, command: "hostname"
+		sshCommand remote: remote, command: "date"
+                sshCommand remote: kops, command: "cd Maven-Java-Project; git pull"
+	        sshCommand remote: kops, command: "kubectl apply -f Maven-Java-Project/k8s-code/staging/namespace/staging-ns.yml"
+	        sshCommand remote: kops, command: "kubectl apply -f Maven-Java-Project/k8s-code/prod/namespace/prod-ns.yml"
 		}
 		}
 	stage ('SonarQube Analaysis'){
@@ -88,6 +88,15 @@ pipeline {
 		    }
 	sh " docker push gaddam146/webapp"
 		   
+       }
+       }
+       stage('Deploy to staging'){
+       steps{
+       //Deploy to K8s cluster
+       echo "Deploy to staging server"
+              sshCommand remote: kops, command: "cd Maven-Java-Project; git pull"
+	      sshCommand remote: kops, command: "kubectl delete -f Maven-Java-Project/k8s-code/staging/app/deploy-webapp.yml"
+	      sshCommand remote: kops, command: "kubectl apply -f Maven-Java-Project/k8s-code/staging/app/."
        }
        }
        }
