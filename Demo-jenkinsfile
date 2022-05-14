@@ -6,10 +6,11 @@ pipeline {
         agent {
 		       label 'Build_Server'
 		}
-			steps {
-                checkout([$class: 'GitSCM', branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[credentialsId: '07bd4fc0-8a3f-4683-b361-779f7a426ecb', url: 'https://github.com/gaddam146/Maven-Java-Project.git']]])
-            }
-        }
+		//	steps {
+                // checkout([$class: 'GitSCM', branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[credentialsId: '07bd4fc0-8a3f-4683-b361-779f7a426ecb', url: 'https://github.com/gaddam146/Maven-Java-Project.git']]])
+                 // stash 'source'
+	    }
+	    }
         
 	}
 }
